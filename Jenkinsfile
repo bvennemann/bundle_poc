@@ -14,7 +14,7 @@ pipeline {
                 echo 'Install the Databricks CLI'
                 sh 'curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh'
                 echo 'Validate Bundle'
-                sh 'databricks bundle validate'
+                sh '/usr/local/bin/databricks bundle validate'
 
             }
         }
