@@ -13,6 +13,8 @@ pipeline {
                 echo 'Running integration tests'
                 echo 'Install the Databricks CLI'
                 sh 'curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh'
+                echo 'Validate Bundle'
+                sh 'databricks bundle validate'
 
             }
         }
