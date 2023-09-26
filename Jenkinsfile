@@ -26,8 +26,8 @@ pipeline {
         }
         stage('Tests prior to release in prod'){
             when {
-                /* only run when a PR is made against branch 'master' */
-                changeRequest target: 'master'
+                /* only run when a PR is made against branch 'main' */
+                changeRequest target: 'main'
             }
             steps {
                 echo 'Running tests prior to prod release'
@@ -35,8 +35,8 @@ pipeline {
         }
         stage('Deploy to prod') {
             when {
-                /* only run when a change (merge) is made to the master branch */
-                branch 'master'
+                /* only run when a change (merge) is made to the main branch */
+                branch 'main'
             }
             steps {
                 echo 'Deploying to prod target....'
