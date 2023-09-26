@@ -10,8 +10,6 @@ pipeline {
             }
             steps {
                 echo 'Running unit tests'
-            }
-            steps {
                 echo 'Running integration tests'
             }
         }
