@@ -3,11 +3,13 @@ pipeline {
 
     stages {
         stage('Unit and Integration Tests') {
+            /*
             agent {
                 docker {
                     image 'python:3-alpine'
                 }
             }
+            */
             when {
                 /* only run when a PR is made against branch 'develop' */
                 changeRequest target: 'develop'
