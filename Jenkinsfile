@@ -12,9 +12,9 @@ pipeline {
                 echo 'Running unit tests'
                 echo 'Running integration tests'
                 echo 'Install the Databricks CLI'
-                sh 'curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh'
+                sh 'curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh'
                 echo 'Validate Bundle'
-                sh '/usr/local/bin/databricks bundle validate'
+                sh 'databricks bundle validate'
 
             }
         }
