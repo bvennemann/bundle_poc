@@ -12,8 +12,8 @@ pipeline {
                 echo 'Running unit tests'
                 echo 'Running integration tests'
                 echo 'Install the Databricks CLI'
-                sh '''curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh
-                databricks bundle validate'''
+                sh 'curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh'
+                sh '/var/lib/jenkins/workspace/bundle_poc_pipeline/bin/databricks bundle validate'
 
             }
         }
