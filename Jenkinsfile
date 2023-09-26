@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Unit and Integration Tests') {
+            when {
+                /* only run when a PR is made against branch 'develop' */
+                changeRequest target: 'develop'
+
+            }
+            steps {
+                echo 'Running unit tests'
+            }
+            steps {
+                echo 'Running integration tests'
+            }
+        }
+        stage('Deploy to staging'){
+            when {
+                /* only run when a change (merge) is made to the develop branch */
+                branch 'develop'
+            }
+            steps {
+                echo 'Deploying to staging target'
+            }
+        }
+        stage('Tests prior to release in prod'){
+            when {
+                /* only run when a PR is made against branch 'master' */
+                changeRequest target: 'master'
+            }
+            steps {
+                echo 'Running tests prior to prod release'
+            }
+        }
+        stage('Deploy to prod') {
+            when {
+                /* only run when a change (merge) is made to the master branch */
+                branch 'master'
+            }
+            steps {
+                echo 'Deploying to prod target....'
+            }
+        }
+    }
+}
