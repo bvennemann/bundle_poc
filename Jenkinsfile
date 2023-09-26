@@ -11,6 +11,9 @@ pipeline {
             steps {
                 echo 'Running unit tests'
                 echo 'Running integration tests'
+                echo 'Install the Databricks CLI'
+                curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
+
             }
         }
         stage('Deploy to staging'){
