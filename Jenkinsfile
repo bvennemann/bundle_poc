@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        dockerfile true
+    }
 
     stages {
         stage('Unit and Integration Tests') {
@@ -19,11 +21,8 @@ pipeline {
                 echo 'Running unit tests'
                 echo 'Running integration tests'
                 echo 'Install the Databricks CLI'
-                withEnv(["HOME=${env.WORKSPACE}"]) {
 
-                    sh 'curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh'
-                    sh 'databricks bundle validate'
-                }
+                sh 'databricks bundle validate'
 
             }
         }
