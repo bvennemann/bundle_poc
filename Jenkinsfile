@@ -17,6 +17,11 @@ pipeline {
                 changeRequest target: 'develop'
 
             }
+            environment {
+                ARM_TENANT_ID = credentials('LAB_AZURE_SP_TENANT_ID')
+                ARM_CLIENT_ID = credentials('LAB_AZURE_SP_APPLICATION_ID')
+                ARM_CLIENT_SECRET = credentials('LAB_AZURE_SP_CLIENT_SECRET') 
+            }
             steps {
                 echo 'Running unit tests'
                 echo 'Running integration tests'
