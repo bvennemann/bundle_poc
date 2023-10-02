@@ -27,17 +27,23 @@ pipeline {
                 echo 'Running integration tests'
                 echo 'Install the Databricks CLI'
 
-                sh 'databricks bundle validate'
+                sh 'databricks bundle validate -t staging'
 
             }
         }
-        stage('Deploy to staging'){
+        stage('Deploy to Lab Workspace with Staging config'){
             when {
                 /* only run when a change (merge) is made to the develop branch */
                 branch 'develop'
             }
+            environment {
+                ARM_TENANT_ID = credentials('LAB_AZURE_SP_TENANT_ID')
+                ARM_CLIENT_ID = credentials('LAB_AZURE_SP_APPLICATION_ID')
+                ARM_CLIENT_SECRET = credentials('LAB_AZURE_SP_CLIENT_SECRET') 
+            }
             steps {
-                echo 'Deploying to staging target'
+                sh 'databricks bundle validate -t staging'
+                sh 'databricks bundle deploy -t staging'
             }
         }
         stage('Tests prior to release in prod'){
