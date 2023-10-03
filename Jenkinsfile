@@ -64,8 +64,8 @@ pipeline {
         }
         stage('Lab: Deploy to Lab with staging config'){
             when {
-                /* only run when a change (merge) is made to the develop branch */
-                branch 'develop'
+                /* only run when a change (merge) is made to the develop-lab branch */
+                branch 'develop-lab'
             }
             environment {
                 /* Set environment for Lab workspace */
@@ -74,8 +74,24 @@ pipeline {
                 ARM_CLIENT_SECRET = credentials('LAB_AZURE_SP_CLIENT_SECRET') 
             }
             steps {
-                sh 'databricks bundle validate -t staging'
-                sh 'databricks bundle deploy -t staging'
+                sh 'databricks bundle validate -t staging-lab'
+                sh 'databricks bundle deploy -t staging-lab'
+            }
+        }
+        stage('Int: Deploy to Int with staging config'){
+            when {
+                /* only run when a change (merge) is made to the develop-int branch */
+                branch 'develop-int'
+            }
+            environment {
+                /* Set environment for Int workspace */
+                ARM_TENANT_ID = credentials('INT_AZURE_SP_TENANT_ID')
+                ARM_CLIENT_ID = credentials('INT_AZURE_SP_APPLICATION_ID')
+                ARM_CLIENT_SECRET = credentials('INT_AZURE_SP_CLIENT_SECRET') 
+            }
+            steps {
+                sh 'databricks bundle validate -t staging-int'
+                sh 'databricks bundle deploy -t staging-int'
             }
         }
         stage('Factory: Prerelease tests'){
