@@ -12,7 +12,7 @@ RUN apt-get -y install curl
 # Install the Databricks CLI
 RUN curl -fsSL https://raw.githubusercontent.com/databricks/setup-cli/main/install.sh | sh
 
-# Install Python dependencies
+# Install Dependencies
 COPY jenkins-requirements.txt jenkins-requirements.txt
 RUN python -m pip install --upgrade pip
 RUN pip install -r jenkins-requirements.txt
