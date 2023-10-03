@@ -2,7 +2,7 @@
 resources:
   jobs:
     bundle_poc_job:
-      name: bundle_poc_job
+      name: ${bundle.environment}_bundle_poc_job
 
       schedule:
         quartz_cron_expression: '44 37 8 * * ?'
