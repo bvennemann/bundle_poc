@@ -33,7 +33,7 @@ targets:
     # to a path that is not specific to the current user.
     mode: production
     workspace:
-      host: https://adb-8195009858693383.3.azuredatabricks.net
+      host: https://adb-4437901305756982.2.azuredatabricks.net
       root_path: /Shared/.bundle/prod/${bundle.name}
     run_as:
       # This runs as bernhard.vennemann@d-one.ai in production. Alternatively,

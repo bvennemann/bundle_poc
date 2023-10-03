@@ -11,4 +11,5 @@
     "files.exclude": {
         "**/*.egg-info": true
     },
+    "python.envFile": "${workspaceFolder}/.databricks/.databricks.env",
 }

@@ -24,9 +24,11 @@ pipeline {
             }
             steps {
                 echo 'Running unit tests'
+                sh 'pytest --junitxml=test-unit.xml'
+                
                 echo 'Running integration tests'
-                echo 'Install the Databricks CLI'
-
+                
+                echo 'Validate Bundle with staging target'
                 sh 'databricks bundle validate -t staging'
 
             }
