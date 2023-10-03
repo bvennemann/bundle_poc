@@ -26,16 +26,24 @@ targets:
     workspace:
       host: https://adb-4241309368150769.9.azuredatabricks.net # Int Workspace
 
-  # Optionally, there could be a 'staging' target here.
-  # (See Databricks docs on CI/CD at https://docs.databricks.com/dev-tools/bundles/index.html.)
-  #
+  # The 'staging' targets
   staging-lab:
+    # For staging deployments, we only have a single copy, so we override the
+    # workspace.root_path default of
+    # /Users/${workspace.current_user.userName}/.bundle/${bundle.target}/${bundle.name}
+    # to a path that is not specific to the current user.
     workspace:
       host: https://adb-8195009858693383.3.azuredatabricks.net # Lab Workspace
+      root_path: /Shared/.bundle/staging-lab/${bundle.name}
 
   staging-int:
+    # For staging deployments, we only have a single copy, so we override the
+    # workspace.root_path default of
+    # /Users/${workspace.current_user.userName}/.bundle/${bundle.target}/${bundle.name}
+    # to a path that is not specific to the current user.
     workspace:
       host: https://adb-4241309368150769.9.azuredatabricks.net # Int Workspace
+      root_path: /Shared/.bundle/staging-int/${bundle.name}
 
   # The 'prod' target, used for production deployment.
   prod:
