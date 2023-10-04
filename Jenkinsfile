@@ -23,6 +23,7 @@ pipeline {
                 
                 /* Run integration tests */
                 echo 'Running integration tests'
+                /* Deploy with target test-lab and run workflow? */
 
                 /* Validate Databricks bundle with staging target */
                 echo 'Validate Bundle with staging target'
@@ -52,6 +53,7 @@ pipeline {
                 
                 /* Run integration tests */
                 echo 'Running integration tests'
+                /* Deploy with target test-int and run workflow? */
 
                 /* Validate Databricks bundle with staging target */
                 echo 'Validate Bundle with staging target'
