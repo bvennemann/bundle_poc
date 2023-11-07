@@ -1,6 +1,9 @@
 pipeline {
     agent {
-        dockerfile true
+        /*dockerfile true */
+        docker {
+            image 'bundle_poc_image:latest'
+        }
     }
 
     stages {
