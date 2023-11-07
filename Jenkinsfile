@@ -3,7 +3,6 @@ pipeline {
         /*dockerfile true */
         docker {
             image 'bundle_poc_image:latest'
-            registryUrl 'localhost:5000/bundle_poc_image'
         }
     }
 
