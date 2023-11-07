@@ -2,7 +2,7 @@ pipeline {
     agent {
         /*dockerfile true */
         docker {
-            image 'localhost:5000/bundle_poc_image/bundle_poc_image:latest'
+            image 'localhost:5000/bundle_poc_image:latest'
             /*registryUrl 'http://localhost:5000/bundle_poc_image/'*/
         }
     }
