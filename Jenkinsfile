@@ -2,8 +2,8 @@ pipeline {
     agent {
         /*dockerfile true */
         docker {
-            image 'localhost:5000/bundle_poc_image:latest'
-            registryUrl 'http://localhost:5000'
+            image 'host.docker.internal:5000/bundle_poc_image:latest'
+            registryUrl 'http://host.docker.internal:5000'
         }
     }
 
