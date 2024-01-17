@@ -55,6 +55,9 @@ targets:
     workspace:
       host: https://adb-4437901305756982.2.azuredatabricks.net # Factory Workspace
       root_path: /Shared/.bundle/prod/${bundle.name}
+    permissions:
+      - user_name: nino.weingart@d-one.ai
+        level: CAN_MANAGE
     run_as:
       # This runs as bernhard.vennemann@d-one.ai in production. Alternatively,
       # a service principal could be used here using service_principal_name

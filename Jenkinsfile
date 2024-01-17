@@ -34,7 +34,9 @@ pipeline {
                 sh 'databricks bundle validate -t staging-lab'
 
                 /* Validate dbt project */
-                /* dbt parse */
+                /* dbt parse --> braucht keinen DB  Zugriff*/
+                /* dbt compile --> braucht DB  Zugriff via ENV Variable*/
+                /* auf Databricks: dbt run, dbt test (als Notebook job)*/
 
             }
         }
