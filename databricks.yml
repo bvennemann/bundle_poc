@@ -35,6 +35,11 @@ targets:
     workspace:
       host: https://adb-8195009858693383.3.azuredatabricks.net # Lab Workspace
       root_path: /Shared/.bundle/staging-lab/${bundle.name}
+    run_as:
+      service_principal_name: 0fd0ef45-7e77-44ea-940e-987e79290a02
+    permissions:
+      - service_principal_name: 0fd0ef45-7e77-44ea-940e-987e79290a02
+        level: CAN_RUN
 
   staging-int:
     # For staging deployments, we only have a single copy, so we override the
@@ -44,6 +49,11 @@ targets:
     workspace:
       host: https://adb-4241309368150769.9.azuredatabricks.net # Int Workspace
       root_path: /Shared/.bundle/staging-int/${bundle.name}
+    run_as:
+      service_principal_name: 593f1531-9a5c-474d-9454-8e0012c573ed
+    permissions:
+      - service_principal_name: 593f1531-9a5c-474d-9454-8e0012c573ed
+        level: CAN_RUN
 
   # The 'prod' target, used for production deployment.
   prod:
@@ -55,12 +65,9 @@ targets:
     workspace:
       host: https://adb-4437901305756982.2.azuredatabricks.net # Factory Workspace
       root_path: /Shared/.bundle/prod/${bundle.name}
-    permissions:
-      - user_name: nino.weingart@d-one.ai
-        level: CAN_MANAGE
     run_as:
-      # This runs as bernhard.vennemann@d-one.ai in production. Alternatively,
-      # a service principal could be used here using service_principal_name
-      # (see Databricks documentation).
-      user_name: bernhard.vennemann@d-one.ai
+      service_principal_name: 67bf85a0-dd67-48f1-af04-bee8d047edfa
+    permissions:
+      - service_principal_name: 67bf85a0-dd67-48f1-af04-bee8d047edfa
+        level: CAN_RUN
     
